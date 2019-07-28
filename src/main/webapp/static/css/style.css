@@ -29,6 +29,11 @@ body {
 	text-decoration: none;
 }
 
+.header_tab a:HOVER {
+	color:#fff !important;
+	text-decoration: none !important;
+}
+
 #main {
 	width:80%;
 }

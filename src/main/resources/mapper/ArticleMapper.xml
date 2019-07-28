@@ -35,6 +35,9 @@
 			<if test="title != null">
 				title like "%"#{title,jdbcType=VARCHAR}"%"
 			</if>
+			<if test="content != null">
+				or content like "%"#{content,jdbcType=VARCHAR}"%"
+			</if>
 		</where>
 		order by pubTime desc
 	</select>

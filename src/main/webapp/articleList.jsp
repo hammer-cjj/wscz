@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>网络传真</title>
+<title>网络传真-主页</title>
 
 <link href="${pageContext.request.contextPath}/static/css/style.css" rel="stylesheet">
 <!-- Bootstrap -->
@@ -60,11 +60,21 @@
 		}
 	}
 	
-	$(document).keydown(function (e) {
+	//搜索
+	function search() {
+		var keyword = $('#keyword').val();
+		if (keyword == null || keyword == "") {
+			alert("请输入关键词!");
+			return false;
+		}
+		return true;
+	}
+	
+	/* $(document).keydown(function (e) {
 		if (e.keyCode === 13) {
 			login();
 		}
-	});
+	}); */
 </script>
 </head>
 <body>
@@ -91,8 +101,8 @@
 </div>
 <div class="header_tab">
 	<div style="padding-left:300px;">
-		<a href="#">首页</a>
-		<a href="#">市局首页</a>
+		<a href="${pageContext.request.contextPath}">首页</a>
+		<a href="http://10.123.128.11">市局首页</a>
 		<a id="currentTime"></a>
 	</div>
 </div>
@@ -128,15 +138,15 @@
 			<div class="right-content">
 				<div class="r_top_nav">
 					<a class="r_top_nav_name" href="#">网络传真</a>
-					<form>
+					<form id="searchForm" action="${pageContext.request.contextPath}/article/search" method="post" onsubmit="return search()">
 						<div class="search_text" style="float:right;">
-							<input name="keyword" type="text" style="height:40px;font-size:18px;float:left;" />
+							<input id="keyword" name="keyword" type="text" style="height:40px;font-size:18px;float:left;" />
 							<select name="tiaojian"  style="font-size:16px;width:60px;height:40px;float:left;">
-								<option value="" >全文</option>
+								<option value="0" >全文</option>
 								<option value="1">标题</option>
 								<option value="2">内容</option>
 							</select>
-							<input style="float:left;height:40px;font-size:16px;" class="btn btn-primary" type="submit" value="搜索" />
+							<button  style="float:left;height:40px;font-size:16px;" class="btn btn-primary" type="submit" >搜索</button>
 						</div>
 					</form>
 				</div>

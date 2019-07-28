@@ -41,6 +41,43 @@ public class ArticleController {
 	private SignDetailService signDetailService;
 	
 	/**
+	 * 分页模糊查询
+	 * @param pn
+	 * @param request
+	 * @param response
+	 * @throws IOException 
+	 * @throws ServletException 
+	 */
+	@RequestMapping("/search")
+	public void search(@RequestParam(value="pn",defaultValue="1")Integer pn,
+			HttpServletRequest request,HttpServletResponse response) throws Exception {
+		PageHelper.startPage(pn, 15);
+		String keyword = request.getParameter("keyword");
+		int tiaojian = Integer.parseInt(request.getParameter("tiaojian"));
+		List<Article> articleList = null;
+		if (0 == tiaojian) {  //全文搜索
+			Article art = new Article();
+			art.setTitle(keyword);
+			art.setContent(keyword);
+			articleList = articleService.listAll(art);
+		} else if (1 == tiaojian) { //按照标题搜索
+			Article art = new Article();
+			art.setTitle(keyword);
+			articleList = articleService.listAll(art);
+		} else if (2 == tiaojian) {  //按照内容搜索
+			Article art = new Article();
+			art.setContent(keyword);
+			articleList = articleService.listAll(art);
+		}
+		request.setAttribute("tiaojian", tiaojian);
+		request.setAttribute("keyword", keyword);
+		PageInfo<Article> pageInfo = new PageInfo<Article>(articleList,5);
+		request.setAttribute("pageInfo", pageInfo);
+		request.getRequestDispatcher("/searchList.jsp").forward(request, response);
+		
+	}
+	
+	/**
 	 * 分页查询文章
 	 * @throws IOException 
 	 * @throws ServletException 
