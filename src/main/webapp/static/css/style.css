@@ -1,0 +1,102 @@
+body {
+	background-color:rgb(243,243,243);
+	background-image:url("../images/foot_bg.png");
+	background-repeat:no-repeat;
+	background-position:bottom;
+	font-family:Microsoft Yahei;
+	font-size:14px;
+}
+
+.carousel-inner img {
+	width:100%;
+}
+
+.header_tab {
+	width:100%;
+	height:50px;
+	background-color:rgb(21,53,105);
+	padding-top: 5px;
+}
+
+.header_tab a{
+	color:#fff;
+	height:40px;
+	width:150px;
+	line-height:40px;
+	font-size:20px;
+	margin-left: 20px;
+	margin-right: 20px;
+	text-decoration: none;
+}
+
+#main {
+	width:80%;
+}
+
+#login {
+	width: 300px;
+	height:250px;
+	margin-top:12px;
+	border: 1px solid #eeeeee;
+}
+
+#login .top_nav {
+	position: relative;
+	height:35px;
+	color:#23447a;
+	line-height: 35px;
+	font-size:18px;
+	padding-top: 5px;
+	padding-left: 25px;
+}
+
+#login .name-pwd {
+	color: #717171;
+	font-size:16px;
+	margin: 15px 25px;
+}
+
+.right-content {
+	width:98%;
+	height:620px;
+	border: 1px solid #eeeeee;
+	margin-top: 12px;
+}
+
+.right-content .r_top_nav {
+	position: relative;
+	background-color: rgb(238,238,238);
+	width: 100%;
+	height: 40px;
+}
+
+.r_top_nav_name{
+	width: 120px;
+	text-align: center;
+	height: 40px;
+	float: left;
+	cursor: pointer;
+	color: #fff;
+	font-size:19px;
+	line-height:40px;
+	background-color: rgb(21,53,105);
+	text-decoration: none;
+}
+
+#bs li {
+	list-style: none;
+}
+
+#bs li a {
+	font-size: 18px;
+	color:#0000ff;
+	text-decoration: none;
+	line-height: 36px;
+}
+
+#bs li span {
+	font-size: 18px;
+	color:#000;
+	line-height: 36px;
+	margin: 0px 10px;
+}
