@@ -24,11 +24,13 @@
 	//等级格式化显示
 	function formatDj(val) {
 		if (val == 0) {
-			return "一般";
+			return "平急";
 		} else if (val == 1) {
 			return "加急";
 		} else if (val == 2) {
 			return "特急";
+		} else if (val == 3) {
+			return "特提";
 		}
 	}
 	

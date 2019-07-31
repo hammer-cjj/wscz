@@ -74,9 +74,10 @@
    			<td valign="top">
    				<input class="easyui-textbox" id="title" required="true" name="title" style="height:25px;width:675px;"/>
    				&nbsp;&nbsp;等级:	&nbsp;&nbsp;<select id="djFlag" name="djFlag" class="easyui-combobox" style="height:25px;width:70px;" panelHeight='auto' name="djFlag">
-					    <option value="0" checked="checked">一般</option>
+					    <option value="0" checked="checked">平急</option>
 					    <option value="1">加急</option>
-					    <option value="2">特级</option>
+					    <option value="2">特急</option>
+					    <option value="3">特提</option>
 					</select>
    			</td>
    		</tr>

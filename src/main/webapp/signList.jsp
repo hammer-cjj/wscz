@@ -54,7 +54,7 @@
 						<tr height="20px">
 							<c:forEach items="${signDetailList }" var="signDetail" varStatus="status">
 								<c:if test="${status.count % 2 != 0 }">
-									<td >
+									<td align="left">
 										<input type="radio" value="${signDetail.signDeptName }" name="signDeptName" />${signDetail.signDeptName }</td>
 									<td>
 										<div align="center">
@@ -68,7 +68,7 @@
 									</c:if>
 								</c:if>
 								<c:if test="${status.count % 2 == 0 }">
-									<td ><input type="radio" value="${signDetail.signDeptName }" name="signDeptName" />${signDetail.signDeptName }</td>
+									<td align="left"><input type="radio" value="${signDetail.signDeptName }" name="signDeptName" />${signDetail.signDeptName }</td>
 									<td>
 										<div align="center">
 											<c:if test="${signDetail.signFlag == 0 }"><font color="#ff0000">未签收</font></c:if>

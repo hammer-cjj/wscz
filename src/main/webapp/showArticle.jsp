@@ -57,7 +57,7 @@
 							<p>
 								<table width="600px" align="center" border="0" cellpadding="0" cellspacing="0">
 									<tr valign="top">
-										<td width="50%"><font size="4">舟公网传${article.gwh }</font></td>
+										<td width="50%" align="left"><font size="4">舟公网传${article.gwh }</font></td>
 										<td width="50%">
 											<div align="right">
 												<font size="4">签发人:</font>
@@ -67,15 +67,16 @@
 									</tr>
 									<tr><td colspan="2"><hr width="600px" size="2" align="center" color="#000000" noshade=""/></td></tr>
 									<tr valign="top">
-										<td><font face="宋体" size="4">等级:</font><font face="宋体" size="4">
-											<c:if test="${article.djFlag == 0 }">一般</c:if>
+										<td align="left"><font face="宋体" size="4">等级:</font><font face="宋体" size="4">
+											<c:if test="${article.djFlag == 0 }">平急</c:if>
 											<c:if test="${article.djFlag == 1 }">加急</c:if>
 											<c:if test="${article.djFlag == 2 }">特急</c:if>
+											<c:if test="${article.djFlag == 3 }">特提</c:if>
 										</font></td>
 										<td align="right"><font face="宋体" size="4">发送时间:</font><font face="宋体" size="4" id="pubTime"><fmt:formatDate value="${article.pubTime}"   pattern="yyyy-MM-dd hh:mm:ss" type="date" dateStyle="long" /></font></td>
 									</tr>
 									<tr><td colspan="2"><hr width="600px" size="2" align="center" color="#000000" noshade=""/></td></tr>
-									<tr><td colspan="2"><font face="宋体" size="4">抄送:</font><font face="宋体" size="4">${chaoSongDept }</font></td></tr>
+									<tr><td colspan="2" align="left"><font face="宋体" size="4">抄送:</font><font face="宋体" size="4">${chaoSongDept }</font></td></tr>
 									<tr><td colspan="2"><hr width="600px" size="2" align="center" color="#000000" noshade=""/></td></tr>
 									<%-- <tr>
 										<td height="1" colspan="2">
@@ -105,7 +106,7 @@
 				<table width="600px" align="center" border="0">
 					<tr><td colspan="3"><hr width="600px" size="2" align="center" color="#000000"  noshade=""/></td></tr>
 					<tr>
-						<td width="34%"><font face="宋体" size="4">承办单位:</font><font face="宋体" size="4">${article.chengBanDept }</font></td>
+						<td width="34%" align="left"><font face="宋体" size="4">承办单位:</font><font face="宋体" size="4">${article.chengBanDept }</font></td>
 						<td width="33%"></td>
 						<td width="33%" align="right"><font face="宋体" size="4">发布者:</font><font face="宋体" size="4">${article.author }</font></td>
 					</tr>

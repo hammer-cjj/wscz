@@ -113,6 +113,12 @@ public class ArticleController {
 		return modelMap;
 	}
 	
+	/**
+	 * 后台修改文章时，按照ID查询
+	 * @param id
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/findById")
 	public String findById(@RequestParam("id")Integer id,HttpServletRequest request) {
 		//Map<String, Object> modelMap = new HashMap<String, Object>();
@@ -122,7 +128,7 @@ public class ArticleController {
 	}
 	
 	/**
-	 * 获取文章内容
+	 * 后台修改文章时，获取文章内容
 	 * @param id
 	 * @param request
 	 * @return

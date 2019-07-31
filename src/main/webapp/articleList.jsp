@@ -118,11 +118,11 @@
 			 	<form id="loginForm" action="${pageContext.request.contextPath}/user/login" method="post">
 			 	<div class="name-pwd">
 			 			用户名
-			 			<input id="userName" name="userName" type="text" style="width:180px;height:40px;margin-left: 15px;" />
+			 			<input id="userName" name="userName" type="text" style="width:150px;height:40px;margin-left: 15px;" />
 			 	</div>
 			 	<div class="name-pwd">
 			 			密码
-			 			<input id="password" name="password" type="password" style="width:180px;height:40px;margin-left: 31px;" />
+			 			<input id="password" name="password" type="password" style="width:150px;height:40px;margin-left: 31px;" />
 			 	</div>
 			 	<div style="margin: 15px 25px;text-align:center;">
 			 		<button type="button" onclick="login()" style="width:100px;font-size:16px;" class="btn btn-primary btn-md">登&nbsp;&nbsp;陆</button>
@@ -154,8 +154,8 @@
 					<c:forEach items="${pageInfo.list }" var="article">
 						<li>
 							<a href="${pageContext.request.contextPath}/article/viewDetail/${article.id }.html" title="${article.title }" target="_blank">
-								<c:if test="${fn:length(article.title)>25}">${fn:substring(article.title,0,25)}...</c:if>
-								<c:if test="${fn:length(article.title)<=25}">${article.title}</c:if>
+								<c:if test="${fn:length(article.title)>20}">${fn:substring(article.title,0,20)}...</c:if>
+								<c:if test="${fn:length(article.title)<=20}">${article.title}</c:if>
 							</a>
 							<span>[<fmt:formatDate value="${article.pubTime}"   pattern="yyyy-MM-dd" type="date" dateStyle="long" /> ${article.chengBanDept }]</span>
 							<span>浏览${article.hit }次</span>

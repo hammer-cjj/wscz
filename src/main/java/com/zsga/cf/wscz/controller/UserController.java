@@ -36,6 +36,7 @@ public class UserController {
 				request.getRequestDispatcher("/index.jsp").forward(request, response);
 			} else {
 				request.getSession().setAttribute("currentUser", resultUser);
+//				request.getSession().setMaxInactiveInterval(5);
 				response.sendRedirect("/wscz/main.jsp");
 			}
 		} catch(Exception e) {

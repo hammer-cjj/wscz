@@ -73,9 +73,10 @@
    			<td valign="top">
    				<input class="easyui-textbox" id="title" required="true" value="${article.title }" name="title" style="height:25px;width:675px;"/>
    				&nbsp;&nbsp;等级:	&nbsp;&nbsp;<select id="djFlag" name="djFlag" style="height:25px;width:70px;"  name="djFlag">
-					    <option value="0">一般</option>
+					    <option value="0">平急</option>
 					    <option value="1">加急</option>
-					    <option value="2">特级</option>
+					    <option value="2">特急</option>
+					    <option value="3">特提</option>
 					</select>
    			</td>
    		</tr>

@@ -44,21 +44,15 @@
        <context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>  
    	</context:component-scan>
    
-    <!-- <mvc:interceptors>
+    <mvc:interceptors>
     	<mvc:interceptor>
-    		拦截所有url及其子路径
-    		<mvc:mapping path="/**"/>
-    		不拦截
-    		首页
-    		<mvc:exclude-mapping path=""/>
-    		<mvc:exclude-mapping path="login.jsp"/>
-    		<mvc:exclude-mapping path="error.jsp"/>
-    		静态资源
-    		<mvc:exclude-mapping path="/static/**"/>
-    		登陆
-    		<mvc:exclude-mapping path="/user/userLogin"/>
-    		<mvc:exclude-mapping path="/sessionError"/>
-    		<bean class="com.zsga.cf.gwlz.interceptor.LoginInterceptor" />
+    		<!-- 拦截特定url -->
+    		<mvc:mapping path="/article/listAll"/>
+    		<mvc:mapping path="/article/save"/>
+    		<mvc:mapping path="/article/findById"/>
+    		<mvc:mapping path="/writeArticle"/>
+    		<mvc:mapping path="/articleManage"/>
+    		<bean class="com.zsga.cf.wscz.interceptor.LoginInterceptor" />
     	</mvc:interceptor>
-    </mvc:interceptors>  -->
+    </mvc:interceptors> 
 </beans>

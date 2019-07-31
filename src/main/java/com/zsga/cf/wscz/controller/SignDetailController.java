@@ -56,7 +56,7 @@ public class SignDetailController {
 	public void sign(SignDetail signDetail,HttpServletRequest request, HttpServletResponse response) throws Exception {
 		signDetail.setSignDate(new Date());
 		signDetail.setSignFlag(1);
-		signDetail.setSignIp(IpUtil.getIp());
+		signDetail.setSignIp(IpUtil.getIp(request));
 		int code = signDetailService.updateSign(signDetail);
 		if (code > 0) {
 			list(signDetail.getArticleId(),request,response);
