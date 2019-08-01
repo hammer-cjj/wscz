@@ -128,12 +128,12 @@ public class ArticleController {
 	}
 	
 	/**
-	 * 后台修改文章时，获取文章内容
+	 * 后台修改文章时，获取文章修改时间(不在使用)
 	 * @param id
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping("/findContent")
+	@RequestMapping("/findPubTime")
 	@ResponseBody
 	public Map<String,Object> findContent(@RequestParam("id")Integer id,HttpServletRequest request) {
 		Map<String, Object> modelMap = new HashMap<String, Object>();
@@ -218,7 +218,7 @@ public class ArticleController {
 		} 
 		
 		//发布时间
-		article.setPubTime(new Date());
+		//article.setPubTime();
 		//发布者
 		User currentUser = (User) request.getSession().getAttribute("currentUser");
 		article.setAuthor(currentUser.getUserName());

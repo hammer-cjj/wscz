@@ -27,6 +27,7 @@ public class Article {
 	//承办单位
 	private String chengBanDept;
 	//发布时间
+	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date pubTime;
 	//是否签收：0：否；1：是
 	private String signFlag;

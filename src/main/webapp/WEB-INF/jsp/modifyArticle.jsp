@@ -11,11 +11,43 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/static/jquery-easyui-1.7.0/jquery.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/static/jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/static/jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/static/kindeditor/themes/default/default.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/static/kindeditor/themes/simple/simple.css" />
-<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/static/kindeditor/kindeditor-all-min.js"></script>
-<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/static/kindeditor/lang/zh-CN.js"></script>
+<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/static/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/static/ueditor/ueditor.all.js"> </script>
+<!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+<!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+<script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/static/ueditor/lang/zh-cn/zh-cn.js"></script>
 <script type="text/javascript">
+
+//对 Date.prototype 的扩展来实现的
+Date.prototype.format = function(format) {
+    var o = {
+        "M+": this.getMonth() + 1, //month 
+        "d+": this.getDate(), //day 
+        "h+": this.getHours(), //hour 
+        "m+": this.getMinutes(), //minute 
+        "s+": this.getSeconds(), //second 
+        "q+": Math.floor((this.getMonth() + 3) / 3), //quarter 
+        "S": this.getMilliseconds() //millisecond 
+    };
+
+    if (/(y+)/i.test(format)) {
+        format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    }
+
+    for (var k in o) {
+        if (new RegExp("(" + k + ")").test(format)) {
+            format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+        }
+    }
+    return format;
+};
+
+//任务发布日期的格式化
+function formatPubtime(val) {
+	var d = new Date(val);
+	return d.format("yyyy-MM-dd hh:mm:ss");
+}
+	var ue = UE.getEditor('editor_id');
 	//发布文章
 	function submitData () {
 		//标题
@@ -39,7 +71,7 @@
 			} 
 		} 
 		//内容
-		var content = $('#editor_id').val();
+		var content = ue.getContentTxt();
 		//抄送单位
 		//var chaoSongDept = $('#chaoSongDept').combobox('getValues');
 		
@@ -101,6 +133,11 @@
    			<td valign="top">
 			 	 是<span style="margin: 0px 20px;"><input <c:if test="${article.signFlag==1 }">checked="checked"</c:if> value="1" class="easyui-radiobutton" name="signFlag" /></span>
 			 	 否<span style="margin: 0px 20px;"><input <c:if test="${article.signFlag==0 }">checked="checked"</c:if> value="0" class="easyui-radiobutton" name="signFlag" /></span>
+   				<span>
+   				发布时间&nbsp;&nbsp;&nbsp;&nbsp;
+   					<input id="pubTime" type="text" class="easyui-datetimebox" name="pubTime"
+    					data-options="required:true" value=""  style="width:150px">
+   				</span>
    			</td>
    		</tr>
    		<tr>
@@ -112,7 +149,7 @@
    		<tr>
    			<td valign="top">内容：</td>
    			<td valign="top">
-				<textarea id="editor_id" name="content"></textarea>
+				<textarea id="editor_id" name="content">${article.content }</textarea>
    			</td>
    		</tr>
    		<tr>
@@ -207,48 +244,23 @@ $("#chaoSongDept").combobox({
 	}
 });
 
-var editor;
-KindEditor.ready(function(K) {
-        editor = K.create('#editor_id', {
-                width: '800px',
-                height:'400px',
-                minWidth:'600px',
-                minHeight:'400px',
-                themeType:'simple',
-                resizeType: 0,
-                uploadJson : '${pageContext.request.contextPath}/static/kindeditor/jsp/upload_json.jsp',
-                fileManagerJson : '${pageContext.request.contextPath}/static/kindeditor/jsp/file_manager_json.jsp',
-                allowFileUpload:true,
-                allowImageUpload:true,
-                filePostName:'file',
-                allowImageRemote:false,
-                items:[
-                       'fontname', 'fontsize','formatblock','wordpaste', '|', 'forecolor','hilitecolor','bold','italic','underline','removeformat', '|',
-                       'justifyleft','justifycenter','justifyright','justifyfull','lineheight','|','link','unlink','image','insertfile'
-                      ],
-                afterBlur:function() {
-                	this.sync();
-                }
-        });
-		
-});
+//加载发布时间
+//$("#pubTime").datetimebox('setValue','${article.pubTime}');
 
 
-
-//获取文章内容
+//获取文章修改时间
 $(function(){
 	$.ajax({
-		url:"${pageContext.request.contextPath}/article/findContent",
+		url:"${pageContext.request.contextPath}/article/findPubTime",
 		data:{id:'${article.id}'},
 		dataType:'json',
 		success:function(result) {
 			if (result.success) {
-				KindEditor.html("#editor_id", result.article.content);
-				editor.focus();
+				$("#pubTime").datetimebox('setValue',result.article.pubTime);
 			}
 		}
 	});
-})
+}) 
 </script>
 </body>
 </html>

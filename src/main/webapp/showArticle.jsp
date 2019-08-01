@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>文章详情</title>
+<title>${article.title }</title>
 <!-- Bootstrap -->
 <%-- <link href="${pageContext.request.contextPath}/static/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/static/bootstrap-3.3.7/css/bootstrap-theme.min.css" rel="stylesheet" > --%>
@@ -17,8 +17,23 @@
 <style type="text/css">
 	body {
 		font-family:"宋体";
-		font-size:18px;
+		font-size:16pt;
 		background-color: #999999;
+	}
+	
+	table {
+		white-space: normal;
+		line-height: normal;
+		font-weight: normal;
+		font-size: medium;
+		font-style: normal;
+		text-align: start;
+		font-variant: normal;
+		 border-collapse: collapse;
+	}
+	
+	p {
+		margin: 0px 0px;
 	}
 </style>
 <script type="text/javascript">
@@ -78,20 +93,28 @@
 									<tr><td colspan="2"><hr width="600px" size="2" align="center" color="#000000" noshade=""/></td></tr>
 									<tr><td colspan="2" align="left"><font face="宋体" size="4">抄送:</font><font face="宋体" size="4">${chaoSongDept }</font></td></tr>
 									<tr><td colspan="2"><hr width="600px" size="2" align="center" color="#000000" noshade=""/></td></tr>
-									<%-- <tr>
+									<tr>
 										<td height="1" colspan="2">
 											<br/>
-											<p align="center"><font face="黑体" size="5">${article.title }</font></p>
+											<p style="margin: 16px 0px;" align="center"><font face="黑体" size="5">${article.title }</font></p>
 										</td>
-									</tr> --%>
+									</tr>
 								</table>
 								<!-- title end -->
 								
 								<!-- content start -->
 								<table width="600px" align="center" border="0">
+									<tr><td height="10px"></td></tr>
 									<tr>
 										<td>
-											${article.content }
+											<span style="font-size:17px;line-height: 1.7">
+												<font face="仿宋_GB2312">
+													<div style="layout-grid:15.6pt none;overflow-x: hidden; word-break: break-all">
+														${article.content }
+													</div>
+												</font>
+											</span>
+											
 										</td>
 									</tr>
 								</table>
@@ -106,8 +129,7 @@
 				<table width="600px" align="center" border="0">
 					<tr><td colspan="3"><hr width="600px" size="2" align="center" color="#000000"  noshade=""/></td></tr>
 					<tr>
-						<td width="34%" align="left"><font face="宋体" size="4">承办单位:</font><font face="宋体" size="4">${article.chengBanDept }</font></td>
-						<td width="33%"></td>
+						<td colspan="2" width="67%" align="left"><font face="宋体" size="4">承办单位:</font><font face="宋体" size="4">${article.chengBanDept }</font></td>
 						<td width="33%" align="right"><font face="宋体" size="4">发布者:</font><font face="宋体" size="4">${article.author }</font></td>
 					</tr>
 					<tr>
