@@ -136,7 +136,7 @@ function formatPubtime(val) {
    				<span>
    				发布时间&nbsp;&nbsp;&nbsp;&nbsp;
    					<input id="pubTime" type="text" class="easyui-datetimebox" name="pubTime"
-    					data-options="required:true" value=""  style="width:150px">
+    					data-options="required:true"   style="width:150px">
    				</span>
    			</td>
    		</tr>
@@ -256,7 +256,7 @@ $(function(){
 		dataType:'json',
 		success:function(result) {
 			if (result.success) {
-				$("#pubTime").datetimebox('setValue',result.article.pubTime);
+				$("#pubTime").datetimebox('setValue',formatPubtime(result.article.pubTime));
 			}
 		}
 	});

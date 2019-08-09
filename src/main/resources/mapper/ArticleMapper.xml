@@ -22,6 +22,11 @@
   	<update id="updateHit" parameterType="Article">
   		update article set hit = #{hit} where id = #{id}
   	</update>
+  	
+  	<!-- 查询最新的8篇文章 -->
+  	<select id="top7" resultType="ArticleExt">
+  		select article.*, abs(datediff(article.pubTime, now())) as diff from article ORDER BY pubTime desc limit 7
+  	</select>	
   		
   	<!-- 查看文章详情 -->
   	<select id="viewDetail" resultType="Article">

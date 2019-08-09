@@ -16,7 +16,7 @@
 <%-- <script src="${pageContext.request.contextPath}/static/bootstrap-3.3.7/js/bootstrap.min.js"></script> --%>
 <style type="text/css">
 	body {
-		font-family:"宋体";
+		font-family:"Microsoft YaHei","宋体";
 		font-size:16pt;
 		background-color: #999999;
 	}
@@ -29,12 +29,18 @@
 		font-style: normal;
 		text-align: start;
 		font-variant: normal;
-		 border-collapse: collapse;
+		border-collapse: collapse;
 	}
 	
 	p {
 		margin: 0px 0px;
 	}
+	
+	#editor_content table{
+		border: 1px solid black;
+	}
+	
+	
 </style>
 <script type="text/javascript">
 
@@ -68,14 +74,14 @@
 									<td align="center"><img src="${pageContext.request.contextPath}/static/images/title.gif" /></td>
 								</tr>
 							</table>
-							
+							<br/>
 							<p>
 								<table width="600px" align="center" border="0" cellpadding="0" cellspacing="0">
 									<tr valign="top">
-										<td width="50%" align="left"><font size="4">舟公网传${article.gwh }</font></td>
+										<td width="50%" align="left"><font face="宋体" size="4">舟公网传${article.gwh }</font></td>
 										<td width="50%">
 											<div align="right">
-												<font size="4">签发人:</font>
+												<font face="宋体" size="4">签发人:</font>
 												<font face="宋体" size="4">${article.signFaPerson }</font>
 											</div>
 										</td>
@@ -107,13 +113,13 @@
 									<tr><td height="10px"></td></tr>
 									<tr>
 										<td>
-											<span style="font-size:17px;line-height: 1.7">
+											<!-- <span style="font-size:17px;line-height: 1.7"> -->
 												<font face="仿宋_GB2312">
-													<div style="layout-grid:15.6pt none;overflow-x: hidden; word-break: break-all">
+													<div id="editor_content" style="layout-grid:15.6pt none;overflow-x: hidden; word-break: break-all">
 														${article.content }
 													</div>
 												</font>
-											</span>
+											<!-- </span> -->
 											
 										</td>
 									</tr>

@@ -3,6 +3,7 @@ package com.zsga.cf.wscz.service;
 import java.util.List;
 
 import com.zsga.cf.wscz.pojo.Article;
+import com.zsga.cf.wscz.pojo.ArticleExt;
 
 public interface ArticleService {
 	int add(Article article);
@@ -11,4 +12,5 @@ public interface ArticleService {
 	int update(Article article);
 	int updateHit(Article article);
 	int delArticle(List<String> ids);
+	List<ArticleExt> top7();
 }

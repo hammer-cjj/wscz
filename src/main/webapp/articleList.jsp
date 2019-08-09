@@ -77,7 +77,8 @@
 	}); */
 </script>
 </head>
-<body>
+<body style="background-color:rgb(243,243,243);">
+<div style="width: 1200px;margin: 0px auto;">
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 	<!-- Indicators -->
 	<ol class="carousel-indicators">
@@ -100,17 +101,17 @@
 	</div>
 </div>
 <div class="header_tab">
-	<div style="padding-left:300px;">
+	<div>
 		<a href="${pageContext.request.contextPath}">首页</a>
 		<a href="http://10.123.128.11">市局首页</a>
 		<a id="currentTime"></a>
 	</div>
 </div>
-
-<div class="container" id="main">
-	<div class="row" style="height:20px;"></div>
-	<div class="row" style="background-color:#fff;height:750px;">
-		<div  class="col-md-3">
+</div>
+<div id="main"  style="height: auto;overflow: hidden;padding-bottom: 20px;margin: 0px auto;width: 1200px;">
+	<div style="height:30px;" ></div>
+	<div style="background-color:#fff;height:750px;">
+		<div  style="float: left;width: 280px;">
 			 <div id="login">
 			 	<div class="top_nav">
 			 		用户登陆:
@@ -118,14 +119,14 @@
 			 	<form id="loginForm" action="${pageContext.request.contextPath}/user/login" method="post">
 			 	<div class="name-pwd">
 			 			用户名
-			 			<input id="userName" name="userName" type="text" style="width:150px;height:40px;margin-left: 15px;" />
+			 			<input id="userName" name="userName" type="text" style="width:150px;height:30px;margin-left: 15px;" />
 			 	</div>
 			 	<div class="name-pwd">
 			 			密码
-			 			<input id="password" name="password" type="password" style="width:150px;height:40px;margin-left: 31px;" />
+			 			<input id="password" name="password" type="password" style="width:150px;height:30px;margin-left: 30px;" />
 			 	</div>
 			 	<div style="margin: 15px 25px;text-align:center;">
-			 		<button type="button" onclick="login()" style="width:100px;font-size:16px;" class="btn btn-primary btn-md">登&nbsp;&nbsp;陆</button>
+			 		<button type="button" onclick="login()" style="width:100px;font-size:14px;" class="btn btn-primary btn-md">登&nbsp;&nbsp;陆</button>
 			 	</div>
 			 	<c:if test="${errMsg != null }">
 			 		<div style="color:red;text-align:center;font-size:14px;">${errMsg }</div>
@@ -134,7 +135,7 @@
 			 	</form>
 			 </div>
 		</div>
-		<div class="col-md-9">
+		<div style="float: right;width: 910px;">
 			<div class="right-content">
 				<div class="r_top_nav">
 					<a class="r_top_nav_name" href="#">网络传真</a>
@@ -150,14 +151,14 @@
 						</div>
 					</form>
 				</div>
-				<ul id="bs" style="padding-top: 25px;">
+				<ul id="bs" style="padding-top: 15px;padding-left:15px;">
 					<c:forEach items="${pageInfo.list }" var="article">
 						<li>
 							<a href="${pageContext.request.contextPath}/article/viewDetail/${article.id }.html" title="${article.title }" target="_blank">
-								<c:if test="${fn:length(article.title)>20}">${fn:substring(article.title,0,20)}...</c:if>
-								<c:if test="${fn:length(article.title)<=20}">${article.title}</c:if>
+								<c:if test="${fn:length(article.title)>38}">${fn:substring(article.title,0,38)}...</c:if>
+								<c:if test="${fn:length(article.title)<=38}">${article.title}</c:if>
 							</a>
-							<span>[<fmt:formatDate value="${article.pubTime}"   pattern="yyyy-MM-dd" type="date" dateStyle="long" /> ${article.chengBanDept }]</span>
+							<span>[<fmt:formatDate value="${article.pubTime}"   pattern="MM.dd" type="date" dateStyle="short" /> ${article.chengBanDept }]</span>
 							<span>浏览${article.hit }次</span>
 						</li>
 					</c:forEach>
@@ -199,7 +200,7 @@
 		</div>
 	</div>
 	
-	<div class="row" style="text-align: center;font-size:16px;margin-top: 20px;">
+	<div style="text-align: center;font-size:16px;margin-top: 20px;">
 		<p>
 			<img src="${pageContext.request.contextPath}/static/images/beian.png" />
 			舟山公安网络传真 由办公室主管

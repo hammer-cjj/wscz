@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.zsga.cf.wscz.pojo.Article;
+import com.zsga.cf.wscz.pojo.ArticleExt;
 import com.zsga.cf.wscz.pojo.Dept;
 import com.zsga.cf.wscz.pojo.SignDetail;
 import com.zsga.cf.wscz.pojo.User;
@@ -39,6 +40,21 @@ public class ArticleController {
 	private DeptService deptService;
 	@Autowired
 	private SignDetailService signDetailService;
+	
+	/**
+	 * 查询最新发布的7条数据
+	 * @param request
+	 * @param response
+	 * @throws Exception
+	 */
+	@RequestMapping("/top7")
+	public void top8(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		List<ArticleExt> articleExtList = articleService.top7();
+		if (null != articleExtList) {
+			request.setAttribute("articleExtList", articleExtList);
+			request.getRequestDispatcher("/default.jsp").forward(request, response);
+		}
+	}
 	
 	/**
 	 * 分页模糊查询

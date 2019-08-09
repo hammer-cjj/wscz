@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.zsga.cf.wscz.mapper.ArticleMapper;
 import com.zsga.cf.wscz.pojo.Article;
+import com.zsga.cf.wscz.pojo.ArticleExt;
 import com.zsga.cf.wscz.service.ArticleService;
 
 @Service
@@ -55,6 +56,11 @@ public class ArticleServiceImpl implements ArticleService {
 	 */
 	public int delArticle(List<String> ids) {
 		return articleMapper.delArticle(ids);
+	}
+
+	@Override
+	public List<ArticleExt> top7() {
+		return articleMapper.top7();
 	}
 
 }
